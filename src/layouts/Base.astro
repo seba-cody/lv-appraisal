@@ -1,0 +1,387 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  schema?: object;
+}
+
+const {
+  title,
+  description = "Certified residential appraisals in Las Vegas. Home, divorce, estate, pre-listing, and refinance appraisals. 40+ years of experience. Call (702) 894-9279.",
+  canonical = "https://lvappraisalco.com",
+  schema: pageSchema,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const pageNames: Record<string, string> = {
+  "/": "Home",
+  "/about": "About Us",
+  "/about/": "About Us",
+  "/services": "Services",
+  "/services/": "Services",
+  "/contact": "Contact",
+  "/contact/": "Contact",
+  "/blog": "Blog",
+  "/blog/": "Blog",
+  "/home-appraisals": "Home Appraisals",
+  "/home-appraisals/": "Home Appraisals",
+  "/divorce-appraisals": "Divorce Appraisals",
+  "/divorce-appraisals/": "Divorce Appraisals",
+  "/estate-probate-appraisals": "Estate & Probate Appraisals",
+  "/estate-probate-appraisals/": "Estate & Probate Appraisals",
+  "/pre-listing-appraisals": "Pre-Listing Appraisals",
+  "/pre-listing-appraisals/": "Pre-Listing Appraisals",
+  "/refinance-tax-appraisals": "Refinance & Tax Appraisals",
+  "/refinance-tax-appraisals/": "Refinance & Tax Appraisals",
+};
+
+const baseSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://lvappraisalco.com/#business",
+      "name": "Las Vegas Appraisal Co.",
+      "description": "Certified residential appraisal services in Las Vegas. Home, divorce, estate, pre-listing, refinance, and property tax appeal appraisals. Serving Clark County since 2008.",
+      "url": "https://lvappraisalco.com",
+      "telephone": "(702) 894-9279",
+      "email": "d.byrne@lvappraisalco.com",
+      "image": "https://lvappraisalco.com/logo.jpg",
+      "logo": "https://lvappraisalco.com/logo.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2421 Tech Center Court, Suite 100",
+        "addressLocality": "Las Vegas",
+        "addressRegion": "NV",
+        "postalCode": "89128",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.1945,
+        "longitude": -115.2638
+      },
+      "founder": { "@id": "https://lvappraisalco.com/#danbyrne" },
+      "foundingDate": "2008",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "08:00", "closes": "18:00" }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Las Vegas", "sameAs": "https://en.wikipedia.org/wiki/Las_Vegas" },
+        { "@type": "City", "name": "Henderson", "sameAs": "https://en.wikipedia.org/wiki/Henderson,_Nevada" },
+        { "@type": "City", "name": "Summerlin", "sameAs": "https://en.wikipedia.org/wiki/Summerlin,_Nevada" },
+        { "@type": "City", "name": "North Las Vegas" },
+        { "@type": "City", "name": "Spring Valley" },
+        { "@type": "City", "name": "Paradise" },
+        { "@type": "City", "name": "Enterprise" },
+        { "@type": "City", "name": "Pahrump" }
+      ],
+      "priceRange": "$$",
+      "paymentAccepted": "Cash, Check, Credit Card",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "702 Alliance",
+        "url": "https://702alliance.com",
+        "description": "Vetted local business network in the Las Vegas Valley"
+      },
+      "sameAs": [
+        "https://www.facebook.com/LasVegasAppraisalCo",
+        "https://www.instagram.com/lvappraisalco",
+        "https://702alliance.com/members/las-vegas-appraisal-co/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Appraisal Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Appraisals", "description": "Certified residential appraisals for buying, selling, refinancing, and more. Starting at $425." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Divorce Appraisals", "description": "Court-ready, USPAP-compliant appraisals for Nevada divorce proceedings." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate & Probate Appraisals", "description": "Date-of-death, current market value, and retrospective appraisals for estate settlement." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Listing Appraisals", "description": "Independent valuations before listing to price your home correctly from day one." }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Refinance & Tax Appeal Appraisals", "description": "Lender-compliant appraisals for refinancing and Clark County property tax appeals." }}
+        ]
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "license",
+          "name": "Nevada Certified Residential Appraiser",
+          "identifier": "A.0206567-CR",
+          "recognizedBy": { "@type": "GovernmentOrganization", "name": "State of Nevada" }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "license",
+          "name": "Nevada Certified Residential Appraiser (Consultant)",
+          "identifier": "A.0007696-CR",
+          "recognizedBy": { "@type": "GovernmentOrganization", "name": "State of Nevada" }
+        }
+      ]
+    },
+
+    // Dan Byrne
+    {
+      "@type": "Person",
+      "@id": "https://lvappraisalco.com/#danbyrne",
+      "name": "Dan Byrne",
+      "givenName": "Dan",
+      "familyName": "Byrne",
+      "jobTitle": "Senior Partner & Chief Appraiser",
+      "description": "Nevada Certified Residential Appraiser serving the Las Vegas Valley since 2008. Specializes in complex residential properties, equestrian estates, and high-value custom homes. 2016 President, Coalition of Appraisers in Nevada.",
+      "url": "https://lvappraisalco.com/about",
+      "worksFor": { "@id": "https://lvappraisalco.com/#business" },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "license",
+        "name": "Nevada Certified Residential Appraiser",
+        "identifier": "A.0206567-CR"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Real Estate Appraiser",
+        "occupationalCategory": "13-2023.00"
+      },
+      "knowsAbout": [
+        "Residential Appraisal",
+        "Real Estate Valuation",
+        "Divorce Appraisals",
+        "Estate Appraisals",
+        "Property Tax Appeals",
+        "FHA Appraisals",
+        "Data Analytics",
+        "Clark County Real Estate"
+      ],
+      "memberOf": [
+        { "@type": "Organization", "name": "Coalition of Appraisers in Nevada" },
+        { "@type": "Organization", "name": "National Association of Appraisers" }
+      ]
+    },
+
+    // James K. Smith
+    {
+      "@type": "Person",
+      "@id": "https://lvappraisalco.com/#jimsmith",
+      "name": "James K. Smith",
+      "givenName": "James",
+      "familyName": "Smith",
+      "jobTitle": "Founding Partner",
+      "description": "Lifelong Las Vegas resident and certified residential appraiser serving Clark County since 1991. Court-certified expert witness with dozens of hearings. FHA-approved.",
+      "url": "https://lvappraisalco.com/about",
+      "worksFor": { "@id": "https://lvappraisalco.com/#business" },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "license",
+        "name": "Nevada Certified Residential Appraiser",
+        "identifier": "A.0007696-CR"
+      },
+      "knowsAbout": [
+        "Complex Residential Appraisal",
+        "Vacant Land Appraisal",
+        "High-Rise Property Valuation",
+        "Retrospective Appraisals",
+        "Expert Witness Testimony",
+        "Appraisal Review"
+      ]
+    },
+
+    // Breadcrumb
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lvappraisalco.com" },
+        ...(currentPath !== "/" && currentPath !== "" ? [{
+          "@type": "ListItem",
+          "position": 2,
+          "name": pageNames[currentPath] || "Page",
+          "item": `https://lvappraisalco.com${currentPath}`
+        }] : [])
+      ]
+    },
+
+    // WebSite
+    {
+      "@type": "WebSite",
+      "@id": "https://lvappraisalco.com/#website",
+      "name": "Las Vegas Appraisal Co.",
+      "url": "https://lvappraisalco.com",
+      "publisher": { "@id": "https://lvappraisalco.com/#business" }
+    },
+
+    // Merge any page-specific schema
+    ...(pageSchema ? [pageSchema] : [])
+  ]
+};
+
+const nav = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+    <style>
+      nav.site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 16px 24px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+      .nav-logo img {
+        height: 44px;
+        width: auto;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--blue);
+      }
+      .nav-cta {
+        font-size: 0.9rem;
+        color: var(--blue) !important;
+        font-weight: 600 !important;
+        white-space: nowrap;
+      }
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text);
+        padding: 4px;
+      }
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .mobile-toggle { display: block; }
+        .nav-links.open {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 68px;
+          left: 0;
+          right: 0;
+          background: var(--bg);
+          padding: 24px;
+          gap: 16px;
+          border-bottom: 1px solid var(--border);
+          z-index: 100;
+        }
+      }
+
+      footer.site-footer {
+        border-top: 1px solid var(--border);
+        padding: 48px 24px;
+        text-align: center;
+      }
+      .footer-inner {
+        max-width: var(--content-width);
+        margin: 0 auto;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+      .footer-links a:hover { color: var(--blue); }
+      .footer-info {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        line-height: 1.8;
+      }
+    </style>
+  </head>
+  <body>
+    <header style="position: relative; border-bottom: 1px solid var(--border);">
+      <nav class="site-nav">
+        <a href="/" class="nav-logo">
+          <img src="/logo.jpg" alt="Las Vegas Appraisal Co." />
+        </a>
+        <ul class="nav-links" id="nav-links">
+          {nav.map(item => (
+            <li><a href={item.href} class={currentPath === item.href || currentPath === item.href + '/' ? 'active' : ''}>{item.label}</a></li>
+          ))}
+          <li><a href="tel:+17028949279" class="nav-cta">(702) 894-9279</a></li>
+        </ul>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          {nav.map(item => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+        <div class="footer-info">
+          <p>2421 Tech Center Court, Suite 100 · Las Vegas, NV 89128</p>
+          <p>(702) 894-9279 · d.byrne@lvappraisalco.com</p>
+          <p style="margin-top: 4px;">Nevada Certified Residential Appraiser #A.0206567-CR · FHA Approved</p>
+          <p>&copy; 2026 Las Vegas Appraisal Co. All rights reserved.</p>
+        </div>
+        <div style="margin-top: 20px;">
+          <a href="https://702alliance.com"
+             rel="nofollow noopener"
+             target="_blank"
+             title="Proud Member of the 702 Alliance — Vetted Local Businesses in Las Vegas">
+            <img src="https://702alliance.com/badges/702-alliance-badge.png"
+                 alt="Proud Member of the 702 Alliance"
+                 style="display:inline-block; max-width:120px; height:auto;" loading="lazy" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('mobile-toggle')?.addEventListener('click', () => {
+        document.getElementById('nav-links')?.classList.toggle('open');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+
+const team = [
+  {
+    name: "Dan Byrne",
+    title: "Senior Partner & Chief Appraiser",
+    license: "NV #A.0206567-CR",
+    image: "/images/dan-byrne.jpg",
+    bio: [
+      "Dan Byrne founded Las Vegas Appraisal Co. in 2008, beginning his career as President and CEO of Summit Field Inspections and Appraisal Services, where he performed property inspections and preservation for lenders on REO properties throughout the Las Vegas Valley.",
+      "He became a Nevada Certified Residential Appraiser after completing over 500 hours of core curriculum and 2,500 hours of supervised work experience. Dan is known for his emphasis on statistics, data analytics, adjustment support, and technology — bringing a rigorous, evidence-based approach to every report.",
+      "Dan served as 2016 President of the Coalition of Appraisers in Nevada and is an active member of the National Association of Appraisers. He specializes in single-family homes, condominiums, custom homes on acreage, equestrian estates, high-end multi-million dollar custom properties, and vacant land throughout Clark County.",
+    ],
+  },
+  {
+    name: "James K. Smith",
+    title: "Founding Partner",
+    license: "NV #A.0007696-CR",
+    image: "/images/jim-smith.jpg",
+    bio: [
+      "Jim Smith is a lifelong Las Vegas resident who has witnessed the valley's growth firsthand since the 1960s. He has been appraising residential properties in Clark County since 1991, bringing over three decades of deep local market knowledge to every assignment.",
+      "Jim is a court-certified expert witness with dozens of hearings to his credit, a board member of the Coalition of Appraisers in Nevada, and a member of the Greater Las Vegas Association of Realtors since 1995. He is FHA-approved and specializes in complex residential properties, vacant land, retrospective appraisals, high-rise and vertical properties, and appraisal review.",
+    ],
+  },
+  {
+    name: "Sarah Marasigan",
+    title: "Operations Manager",
+    image: "/images/sarah-marasigan.jpg",
+    bio: [
+      "Sarah has been with Las Vegas Appraisal Co. for over nine years, serving as the operational backbone of the company. She manages administrative operations, data entry, bookkeeping, report preparation, client correspondence, and property research.",
+      "Sarah ensures that every client interaction is handled professionally and that reports are delivered on time. When you call Las Vegas Appraisal Co., Sarah is often the first voice you hear.",
+    ],
+  },
+];
+---
+
+<Base
+  title="About Us | Las Vegas Appraisal Co."
+  description="Meet the team behind Las Vegas Appraisal Co. — Dan Byrne, James K. Smith, and Sarah Marasigan. Over 40 years of combined residential appraisal experience in Clark County."
+  canonical="https://lvappraisalco.com/about"
+>
+
+  <section style="background: var(--bg-warm); padding: 80px 24px;">
+    <div class="narrow" style="text-align: center;">
+      <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 16px; font-weight: 500;">About Us</p>
+      <h1>The people behind the reports</h1>
+      <p style="color: var(--text-secondary); margin-top: 16px; font-size: 1.05rem;">
+        Las Vegas Appraisal Co. is a team of certified professionals with deep roots in the Las Vegas Valley. We combine decades of local market knowledge with a commitment to accuracy, integrity, and client service.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      {team.map((person, i) => (
+        <div style={`display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; ${i > 0 ? 'margin-top: 56px; padding-top: 56px; border-top: 1px solid var(--border);' : ''}`} class="two-col">
+          <div>
+            <img
+              src={person.image}
+              alt={person.name}
+              style="border-radius: 10px; width: 100%; object-fit: cover; aspect-ratio: 3/4;"
+            />
+          </div>
+          <div>
+            <h2 style="margin-bottom: 4px;">{person.name}</h2>
+            <p style="color: var(--blue); font-weight: 500; margin-bottom: 4px;">{person.title}</p>
+            {person.license && (
+              <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px;">{person.license}</p>
+            )}
+            {person.bio.map(paragraph => (
+              <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--blue-lighter);">
+    <div class="narrow" style="text-align: center;">
+      <h2 style="margin-bottom: 12px;">Work with us</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        Call or text us 7 days a week. We're here to answer your questions and get your appraisal scheduled.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+17028949279" class="btn btn-primary">(702) 894-9279</a>
+        <a href="/contact" class="btn btn-secondary">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

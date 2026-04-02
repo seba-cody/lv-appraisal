@@ -1,17 +1,162 @@
 ---
+import Base from '../layouts/Base.astro';
 
+const services = [
+  { name: "Home Appraisals", href: "/home-appraisals", desc: "Purchase, sale, refinance, or personal — certified valuations you can rely on." },
+  { name: "Divorce Appraisals", href: "/divorce-appraisals", desc: "Court-ready, independent appraisals for equitable property division." },
+  { name: "Estate & Probate", href: "/estate-probate-appraisals", desc: "Date-of-death, retrospective, and trust administration valuations." },
+  { name: "Pre-Listing", href: "/pre-listing-appraisals", desc: "Price your home right the first time with an independent appraisal." },
+  { name: "Refinance & Tax", href: "/refinance-tax-appraisals", desc: "Lender-compliant reports and Clark County property tax appeals." },
+  { name: "Litigation", href: "/contact", desc: "Defensible appraisals for legal disputes, with expert witness testimony." },
+];
+
+const reviews = [
+  { name: "Tiffany Pirwitz", text: "Dan was very professional, flexible, and thorough. He did exactly what he said he would do. I highly recommend Las Vegas Appraisal Co." },
+  { name: "Jonny Nitro", text: "I've been using Las Vegas Appraisal Co. for years as a realtor. They're always available and they actually answer the phone." },
+  { name: "CMP Jobs", text: "The go-to appraisers for estate, divorce, and tax appeals. Professional and accurate every time." },
+  { name: "Fingerprinting INK", text: "Daniel is reliable and professional with very reasonable pricing. We've used them multiple times and will continue to." },
+  { name: "Gary Muma", text: "Thanks Dan! I would refer Las Vegas Appraisal Co. to anyone needing an appraisal. Great experience start to finish." },
+];
+
+const faqs = [
+  { q: "How much does a home appraisal cost in Las Vegas?", a: "Residential appraisals start at $425. The final fee depends on the property's size, type, location, and complexity. Most standard single-family home appraisals fall in the $425–$600 range. Contact us for a free quote — we typically respond the same day." },
+  { q: "How long does a home appraisal take?", a: "The on-site inspection typically takes 30 minutes to 1.5 hours depending on the size of the property. The completed appraisal report is usually delivered within 2–3 business days of the inspection. We offer expedited service when timelines are tight." },
+  { q: "Do I need to be home for the appraisal?", a: "For most appraisals, a homeowner, tenant, or authorized representative should be present to provide access to the property. If the home is vacant, we can often coordinate access with a lockbox or real estate agent." },
+  { q: "What's the difference between an appraisal and a home inspection?", a: "A home inspection examines the physical condition of the property — systems, structure, and potential defects. A home appraisal determines the market value of the property based on its features, condition, and comparable sales in the area. The two serve different purposes and are often both required in a real estate transaction." },
+  { q: "Can I use your appraisal for my lender?", a: "Yes. We are Nevada State Certified and FHA-approved. Our reports are prepared in compliance with USPAP standards and are accepted by most conventional, FHA, and VA lenders throughout Clark County." },
+  { q: "Do you provide appraisals for divorce or estate purposes?", a: "Yes — these are among our most common services. We provide court-ready divorce appraisals and USPAP-compliant estate and probate appraisals accepted by Nevada courts, attorneys, and the IRS." },
+  { q: "How far in advance do I need to schedule?", a: "We typically schedule within 1–3 business days of your request. We're available 7 days a week — just call or text (702) 894-9279." },
+  { q: "What areas do you serve?", a: "We serve the entire Las Vegas Valley, including Henderson, Summerlin, North Las Vegas, Spring Valley, Paradise, Whitney, Enterprise, Sunrise Manor, Pahrump, and surrounding areas in Clark County." },
+];
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "@id": "https://lvappraisalco.com/#faq",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="Las Vegas Appraisal Co. | Certified Home Appraisals in Las Vegas"
+  description="Certified residential appraisals in Las Vegas. Home, divorce, estate, pre-listing, and refinance appraisals. 40+ years of experience. Available 7 days a week. Call (702) 894-9279."
+  canonical="https://lvappraisalco.com"
+  schema={faqSchema}
+>
+
+  <!-- Hero -->
+  <section style="background: var(--bg-warm); padding: 100px 24px 80px;">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+      <div>
+        <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 16px; font-weight: 600;">Clark County's Most Trusted Appraisers</p>
+        <h1 style="margin-bottom: 20px;">Fast. Accurate.<br />Certified.</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7; margin-bottom: 32px;">
+          Over 40 years of residential appraisal experience in the Las Vegas Valley. Nevada State Certified, FHA-approved, and available 7 days a week.
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="tel:+17028949279" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">(702) 894-9279</a>
+          <a href="/contact" class="btn btn-secondary">Request a Free Quote</a>
+        </div>
+      </div>
+      <div style="text-align: center;">
+        <img src="/images/dan-byrne.jpg" alt="Dan Byrne, Senior Partner & Chief Appraiser at Las Vegas Appraisal Co." style="border-radius: 12px; max-height: 440px; object-fit: cover; width: 100%; box-shadow: 0 8px 30px rgba(0,0,0,0.1);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section style="background: var(--blue-darker); padding: 24px; text-align: center;">
+    <div class="container" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; color: #fff; font-size: 0.9rem; font-weight: 500;">
+      <span>40+ Years Experience</span>
+      <span>·</span>
+      <span>State Certified & FHA Approved</span>
+      <span>·</span>
+      <span>6-Point QC Review</span>
+      <span>·</span>
+      <span>Available 7 Days a Week</span>
+      <span>·</span>
+      <span>Starting at $425</span>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section>
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 12px; font-weight: 500;">Our Services</p>
+        <h2>More than just mortgage appraisals</h2>
+        <p style="color: var(--text-secondary); margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">
+          From pre-listing valuations to court-ready divorce appraisals, we handle every type of residential appraisal in the Las Vegas Valley.
+        </p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        {services.map(s => (
+          <a href={s.href} class="card" style="text-decoration: none; display: block;">
+            <h3 style="margin-bottom: 8px; color: var(--text);">{s.name}</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px;">{s.desc}</p>
+            <span style="font-size: 0.85rem; color: var(--blue); font-weight: 500;">Learn more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section style="background: var(--bg-warm);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 12px; font-weight: 500;">What Our Clients Say</p>
+        <h2>Trusted by homeowners, agents, and attorneys</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        {reviews.map(r => (
+          <div class="card">
+            <div style="color: var(--gold); font-size: 1.1rem; margin-bottom: 8px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px; line-height: 1.6;">"{r.text}"</p>
+            <p style="font-weight: 600; font-size: 0.85rem; color: var(--text);">{r.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="narrow">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 12px; font-weight: 500;">Frequently Asked Questions</p>
+        <h2>Common questions about appraisals</h2>
+      </div>
+      {faqs.map(f => (
+        <details style="border-bottom: 1px solid var(--border); padding: 20px 0; cursor: pointer;">
+          <summary style="font-weight: 600; font-size: 1rem; color: var(--text); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            {f.q}
+            <span style="color: var(--blue); font-size: 1.2rem; flex-shrink: 0; margin-left: 12px;">+</span>
+          </summary>
+          <p style="color: var(--text-secondary); margin-top: 12px; line-height: 1.7; font-size: 0.95rem;">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--blue); padding: 64px 24px; text-align: center;">
+    <div class="narrow">
+      <h2 style="color: #fff; margin-bottom: 12px;">Ready to get started?</h2>
+      <p style="color: rgba(255,255,255,0.85); margin-bottom: 28px; font-size: 1.05rem;">
+        Call or text us 7 days a week for a free quote. Most appraisals scheduled within 1–3 business days.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+17028949279" class="btn" style="background: #fff; color: var(--blue); font-size: 1.05rem; padding: 14px 32px;">(702) 894-9279</a>
+        <a href="/contact" class="btn" style="background: transparent; color: #fff; border: 1.5px solid #fff; padding: 14px 32px;">Request a Quote Online</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    name: "Home Appraisals",
+    href: "/home-appraisals",
+    desc: "Whether you're buying, selling, refinancing, or simply want to know what your home is worth, we deliver certified residential appraisals you can rely on. Nevada State Certified and FHA-approved.",
+    price: "Starting at $425",
+  },
+  {
+    name: "Divorce Appraisals",
+    href: "/divorce-appraisals",
+    desc: "Court-ready, USPAP-compliant appraisals for Nevada divorce proceedings. Independent, discreet, and accepted by courts, attorneys, and mediators throughout Clark County.",
+    price: "Starting at $425",
+  },
+  {
+    name: "Estate & Probate Appraisals",
+    href: "/estate-probate-appraisals",
+    desc: "Date-of-death valuations, current market value, retrospective appraisals, and trust administration. IRS-compliant and accepted by Nevada probate courts.",
+    price: "Starting at $425",
+  },
+  {
+    name: "Pre-Listing Appraisals",
+    href: "/pre-listing-appraisals",
+    desc: "Price your home right the first time with an independent, data-driven valuation before you list. A powerful tool for sellers and agents in the Las Vegas market.",
+    price: "Starting at $425",
+  },
+  {
+    name: "Refinance & Tax Appeal Appraisals",
+    href: "/refinance-tax-appraisals",
+    desc: "Lender-compliant reports for refinancing, HELOC, and home equity loans. Independent appraisals for Clark County property tax appeals.",
+    price: "Starting at $425",
+  },
+  {
+    name: "Litigation Appraisals",
+    href: "/contact",
+    desc: "Defensible appraisal reports for legal disputes, partnership dissolutions, and contested valuations. Expert witness testimony available.",
+    price: "Contact for quote",
+  },
+];
+---
+
+<Base
+  title="Appraisal Services | Las Vegas Appraisal Co."
+  description="Home, divorce, estate, pre-listing, refinance, and litigation appraisals in Las Vegas. Certified, fast, and accurate. Starting at $425."
+  canonical="https://lvappraisalco.com/services"
+>
+
+  <section style="background: var(--bg-warm); padding: 80px 24px;">
+    <div class="narrow" style="text-align: center;">
+      <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 16px; font-weight: 500;">Our Services</p>
+      <h1>Certified appraisals for every situation</h1>
+      <p style="color: var(--text-secondary); margin-top: 16px; font-size: 1.05rem;">
+        Real estate appraisals aren't just for buying a home. From divorce settlements to tax appeals, we provide accurate, defensible valuations for every purpose.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        {services.map(s => (
+          <a href={s.href} class="card" style="text-decoration: none; display: flex; flex-direction: column;">
+            <div style="width: 4px; height: 28px; background: var(--blue); border-radius: 2px; margin-bottom: 16px;"></div>
+            <h3 style="margin-bottom: 12px; color: var(--text);">{s.name}</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; flex: 1;">{s.desc}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.85rem; color: var(--text-light);">{s.price}</span>
+              <span style="font-size: 0.85rem; color: var(--blue); font-weight: 500;">Learn more &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section style="background: var(--bg-warm);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2>Why Las Vegas Appraisal Co.?</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+        <div style="text-align: center; padding: 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">&#128203;</div>
+          <h3 style="margin-bottom: 8px;">6-Point QC Review</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Every report passes our quality control process before delivery.</p>
+        </div>
+        <div style="text-align: center; padding: 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">&#9201;</div>
+          <h3 style="margin-bottom: 8px;">2–3 Day Turnaround</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Most reports delivered within 2–3 business days of inspection.</p>
+        </div>
+        <div style="text-align: center; padding: 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">&#128222;</div>
+          <h3 style="margin-bottom: 8px;">7 Days a Week</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Call or text anytime. We actually answer the phone.</p>
+        </div>
+        <div style="text-align: center; padding: 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">&#9989;</div>
+          <h3 style="margin-bottom: 8px;">State Certified & FHA</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Accepted by lenders, courts, and government agencies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--blue); padding: 64px 24px; text-align: center;">
+    <div class="narrow">
+      <h2 style="color: #fff; margin-bottom: 12px;">Get a free quote today</h2>
+      <p style="color: rgba(255,255,255,0.85); margin-bottom: 28px;">
+        Tell us about your property and we'll send a firm quote the same day.
+      </p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="tel:+17028949279" class="btn" style="background: #fff; color: var(--blue); padding: 14px 32px;">(702) 894-9279</a>
+        <a href="/contact" class="btn" style="background: transparent; color: #fff; border: 1.5px solid #fff; padding: 14px 32px;">Request Online</a>
+      </div>
+    </div>
+  </section>
+
+</Base>

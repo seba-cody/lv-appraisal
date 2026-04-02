@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+
+const thanks = Astro.url.searchParams.get('thanks') === '1';
+---
+
+<Base
+  title="Contact | Las Vegas Appraisal Co."
+  description="Call or text (702) 894-9279 for a free appraisal quote. Located at 2421 Tech Center Court, Suite 100, Las Vegas, NV 89128. Available 7 days a week."
+  canonical="https://lvappraisalco.com/contact"
+>
+
+  {thanks && (
+    <div style="background: var(--blue-light); border-bottom: 2px solid var(--blue); padding: 20px 24px; text-align: center;">
+      <p style="color: var(--blue-dark); font-weight: 500; margin: 0;">Thank you! Your request has been sent. We'll get back to you within one business day.</p>
+    </div>
+  )}
+
+  <section style="background: var(--bg-warm); padding: 80px 24px;">
+    <div class="narrow" style="text-align: center;">
+      <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 16px; font-weight: 500;">Contact Us</p>
+      <h1>Let's get your appraisal scheduled</h1>
+      <p style="color: var(--text-secondary); margin-top: 16px; font-size: 1.05rem;">
+        The fastest way to reach us is to call or text. We're available 7 days a week and typically respond the same day.
+      </p>
+      <a href="tel:+17028949279" class="btn btn-primary" style="margin-top: 24px; font-size: 1.1rem; padding: 16px 44px;">(702) 894-9279</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+
+        <!-- Location -->
+        <div class="card">
+          <h3 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 20px; font-weight: 600;">Office Location</h3>
+          <address style="font-style: normal; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px;">
+            <strong style="color: var(--text);">Las Vegas Appraisal Co.</strong><br />
+            2421 Tech Center Court<br />
+            Suite 100<br />
+            Las Vegas, NV 89128
+          </address>
+          <p style="margin-bottom: 8px;">
+            <a href="tel:+17028949279" style="color: var(--text-secondary);">
+              <strong>Phone:</strong> (702) 894-9279
+            </a>
+          </p>
+          <p style="margin-bottom: 8px;">
+            <a href="mailto:d.byrne@lvappraisalco.com" style="color: var(--text-secondary);">
+              <strong>Email:</strong> d.byrne@lvappraisalco.com
+            </a>
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 16px;">
+            Available 7 days a week · Call or text anytime
+          </p>
+          <div style="margin-top: 20px;">
+            <a href="https://www.google.com/maps/place/2421+Tech+Center+Ct,+Las+Vegas,+NV+89128" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 0.9rem; padding: 10px 24px;">
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <!-- Service area -->
+        <div class="card">
+          <h3 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 20px; font-weight: 600;">Service Area</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">We serve the entire Las Vegas Valley and surrounding areas in Clark County:</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            {["Las Vegas", "Henderson", "Summerlin", "North Las Vegas", "Spring Valley", "Paradise", "Enterprise", "Whitney", "Sunrise Manor", "Pahrump"].map(area => (
+              <span style="background: var(--blue-lighter); color: var(--blue-dark); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">{area}</span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Request Form -->
+  <section style="background: var(--bg-warm);">
+    <div class="narrow">
+      <div style="text-align: center; margin-bottom: 36px;">
+        <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 12px; font-weight: 500;">Request a Quote</p>
+        <h2>Tell us about your appraisal needs</h2>
+        <p style="color: var(--text-secondary); margin-top: 12px;">Fill out the form below and we'll get back to you with a firm quote — typically the same day.</p>
+      </div>
+      <form
+        action="https://formsubmit.co/d.byrne@lvappraisalco.com"
+        method="POST"
+        class="card"
+      >
+        <input type="hidden" name="_subject" value="New Quote Request from LV Appraisal Website" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="hidden" name="_next" value="https://lvappraisalco.com/contact?thanks=1" />
+        <input type="text" name="_honey" style="display:none" />
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div>
+            <label for="name" style="display: block; font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Name *</label>
+            <input
+              type="text" id="name" name="name" required
+              style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; background: var(--bg); color: var(--text); transition: border-color 0.2s;"
+              onfocus="this.style.borderColor='var(--blue)'"
+              onblur="this.style.borderColor='var(--border)'"
+            />
+          </div>
+          <div>
+            <label for="phone" style="display: block; font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Phone</label>
+            <input
+              type="tel" id="phone" name="phone"
+              style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; background: var(--bg); color: var(--text); transition: border-color 0.2s;"
+              onfocus="this.style.borderColor='var(--blue)'"
+              onblur="this.style.borderColor='var(--border)'"
+            />
+          </div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="email" style="display: block; font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Email *</label>
+          <input
+            type="email" id="email" name="email" required
+            style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; background: var(--bg); color: var(--text); transition: border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--blue)'"
+            onblur="this.style.borderColor='var(--border)'"
+          />
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="property-address" style="display: block; font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Property Address</label>
+          <input
+            type="text" id="property-address" name="property_address"
+            style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; background: var(--bg); color: var(--text); transition: border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--blue)'"
+            onblur="this.style.borderColor='var(--border)'"
+          />
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label for="purpose" style="display: block; font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Purpose of Appraisal</label>
+          <select
+            id="purpose" name="purpose"
+            style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; background: var(--bg); color: var(--text); cursor: pointer;"
+          >
+            <option value="">Select one...</option>
+            <option value="Purchase / Sale">Purchase or Sale</option>
+            <option value="Refinance">Refinance / HELOC</option>
+            <option value="Divorce">Divorce</option>
+            <option value="Estate / Probate">Estate or Probate</option>
+            <option value="Pre-Listing">Pre-Listing</option>
+            <option value="Tax Appeal">Property Tax Appeal</option>
+            <option value="Litigation">Litigation / Legal</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <label for="message" style="display: block; font-size: 0.85rem; font-weight: 500; color: var(--text); margin-bottom: 6px;">Additional Details</label>
+          <textarea
+            id="message" name="message" rows="4"
+            style="width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; background: var(--bg); color: var(--text); resize: vertical; transition: border-color 0.2s;"
+            onfocus="this.style.borderColor='var(--blue)'"
+            onblur="this.style.borderColor='var(--border)'"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center; font-size: 1rem; padding: 14px;">
+          Request a Free Quote
+        </button>
+        <p style="font-size: 0.8rem; color: var(--text-light); text-align: center; margin-top: 12px;">We typically respond the same business day.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section style="padding: 0;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.5!2d-115.2638!3d36.1945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c3b5e4c7c0e1%3A0x1234567890abcdef!2s2421+Tech+Center+Ct%2C+Las+Vegas%2C+NV+89128!5e0!3m2!1sen!2sus!4v1"
+      width="100%"
+      height="350"
+      style="border: 0; display: block;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Las Vegas Appraisal Co. office location"
+    ></iframe>
+  </section>
+
+</Base>
