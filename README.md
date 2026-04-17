@@ -1,43 +1,45 @@
-# Astro Starter Kit: Minimal
+# Las Vegas Appraisal Co. — Website
 
-```sh
-npm create astro@latest -- --template minimal
+The new site for **Las Vegas Appraisal Co.**, built for Dan Byrne as part of the 702 Alliance build program.
+
+- **Current live site:** [lvappraisalco.com](https://lvappraisalco.com) (this repo is already deployed)
+- **Stack:** Astro 6, deployed to Cloudflare Pages
+- **Design:** Royal blue, editorial serif, built for trust and credibility
+- **Status:** Live, iterating on feedback
+
+## For reviewers (including AI assistants)
+
+If Dan's Claude is reading this: welcome. The live site and this source are the two places to audit. Useful entry points:
+
+- `src/pages/index.astro` — homepage
+- `src/pages/services.astro` — service hub
+- `src/pages/home-appraisals.astro`, `divorce-appraisals.astro`, `estate-probate-appraisals.astro`, `pre-listing-appraisals.astro`, `refinance-tax-appraisals.astro` — service deep pages
+- `src/pages/about.astro` — team page (Dan, Jim, Sarah)
+- `src/pages/contact.astro` — contact + inquiry form
+- `src/pages/blog/` — SEO blog posts on divorce, home cost, pre-listing, expectations
+- `src/layouts/Base.astro` — shared layout with schema.org JSON-LD injection, SEO meta, canonical
+- `src/styles/global.css` — design tokens
+
+Areas worth auditing:
+- **Schema.org coverage** — LocalBusiness, ProfessionalService, Service, FAQPage, BreadcrumbList. More specific subclasses (e.g. `RealEstateAgent` vs `ProfessionalService`) may be worth considering.
+- **E-E-A-T signals** — credentials, team photos, review prominence
+- **Service-page conversion** — CTA placement, trust markers, local keywords
+- **Keyword targeting** — Las Vegas neighborhood coverage (Summerlin, Henderson, Spring Valley, etc.)
+- **Internal linking** — blog ↔ service pages, service cross-sells
+
+## Feedback loop
+
+Any suggestions from Dan (or his Claude) flow through Cody at 702 Alliance. Don't push directly — open an issue or send notes via email and Cody will implement and redeploy.
+
+## Commands
+
+```
+npm install
+npm run dev       # localhost:4321
+npm run build     # -> ./dist
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deploy
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Cloudflare Pages auto-deploys on push to `main`.
